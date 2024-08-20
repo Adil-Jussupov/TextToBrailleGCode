@@ -1,7 +1,9 @@
 import brailleConsts
 
 # Define the long text variable
-long_text = """breakfast - served all day         !
+long_text = """Adil"""
+
+long_text1 = """breakfast - served all day         !
 OMELETTE - SCRAMBLED EGGS v        !
 cooked with pinch of S&P, served   !
 with baguette & fresh fruit #8.95  !
@@ -27,7 +29,10 @@ letters = " 1234567890abcdefghijklmnopqrstuvwxyz,;:..!|&* #'()?/\-"
 chars_per_line = 35
 rows = 22
 z_height = "4.5"
-z_dippen = "-1.0"
+z_dippen = "1.0"       # depth of embosing in millimeters
+
+feedrate = 'F2500'      # feedrate for X and Y axis
+zFeedrate = 'F2500'     # feedrate for Z axis
 
 cleaned = long_text.lower()
 # cleaned = "".join(c.lower() for c in long_text if c.isalpha() or c.isspace())
@@ -56,9 +61,9 @@ def print_binary_with_ht(number):
             i += 1
             if digit == "1":
                 print('G1 Z-', end='')
-                print(z_height, 'F2720')
+                print(z_dippen, 'F2720')
                 print('G1 Z', end='')
-                print(z_height, 'F2720')
+                print(z_dippen, 'F2720')
             else:
                 print('')
             if 3 != i and 6 != i:
@@ -75,14 +80,50 @@ def print_binary_with_ht(number):
 # for letter in letters:
 #     print(ord(letter))
 
-def printChar(inputChar):
-    if inputChar == '\n':
-        print(braille[inputChar])
-    else:
-        print(braille[inputChar], end='')
-        # print(count, " - ", inputChar, end='')
+def embose():
+    # function for adding gcode for embossing a dot
+    print('*')
+    print('G1 Z-', end='')
+    print(z_dippen, zFeedrate)
+    print('G1 Z', end='')
+    print(z_dippen, zFeedrate)
 
-count = 1
+def printBraille(char):
+    binaryChar = char[2:]
+    # print(char, end='')
+    # print(binaryChar, 'Recieved Braille =', binaryChar)
+    i = 1
+    for digit in binaryChar:
+        print('; Dot', i, '- ', end='')
+        if (digit == '1'):
+            embose()
+        else:
+            print('0')
+        if (i == 3):
+            print('G1 X-2.5 Y5', feedrate)      # moving to the dot-4 of current char
+        elif (i == 6):
+            print('\n; Next character')
+            print('G1 X-3.5 Y5', feedrate, end='')      # moving to the dot-1 of the next char
+        else:
+            print('G1 Y-2.5', feedrate)         # moving to the next dot of current char
+        i += 1
+    print()
+
+def printChar(inputChar):
+    # function for printing each character
+    if inputChar == '\n':       # case of reaching a new line
+        print('; New line')     # adding comment to the Gcode
+        print('G1 X', end='')
+        print(chars_per_line * 6,'Y-10', feedrate)
+        # print(braille[inputChar])
+        # print(inputChar)
+    elif inputChar == ' ':
+        print('G1 X-6', feedrate)
+    else:
+        printBraille(braille[inputChar])
+        # printBraille(inputChar)
+
+# count = 1
 # "@": "0b111111",
 
 # for key, value in braille.items():
