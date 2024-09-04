@@ -3,21 +3,21 @@ import brailleConsts
 # Define the long text variable
 long_text1 = """Adil"""
 
-long_text = """breakfast - served all day         !
-OMELETTE - SCRAMBLED EGGS v        !
-cooked with pinch of S&P, served   !
-with baguette & fresh fruit #8.95  !
-- tomato, onions & mushrooms #9.95 !
-- avocados, onions, cheddar        !
-cheese, nata & bell peppers #10.95 !
-- design your own (up to #4        !
-ingredients) #11.95                !
-                                   !
-FRENCH TOAST v                     !
-sourdough bread dipped in our      !
-french toast mix topped with fresh !
-strawberries, topped with powdered !
-sugar #11.75                       !
+long_text = """breakfast - served all day         
+OMELETTE - SCRAMBLED EGGS v        
+cooked with pinch of S&P, served   
+with baguette & fresh fruit #8.95  
+- tomato, onions & mushrooms #9.95 
+- avocados, onions, cheddar        
+cheese, nata & bell peppers #10.95 
+- design your own (up to #4        
+ingredients) #11.95                
+                                   
+FRENCH TOAST v                     
+sourdough bread dipped in our      
+french toast mix topped with fresh 
+strawberries, topped with powdered 
+sugar #11.75                       
 """
 # Define the number of characters per line and the number of rows
 braille = brailleConsts.brailleConst
@@ -27,7 +27,7 @@ rows = 22
 z_dippen = "4.0"       # depth of embossing in millimeters
 
 feedrate = 'F2500'      # feedrate for X and Y axis
-zFeedrate = 'F2500'     # feedrate for Z axis
+zFeedrate = 'F720'     # feedrate for Z axis
 
 cleaned = long_text.lower()
 
