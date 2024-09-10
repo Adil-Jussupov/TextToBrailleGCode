@@ -25,7 +25,10 @@ var selectedColor = readColorFromFile(textFilePath);
 
 var binText = "101010";
 // Create a new document
-var doc = app.documents.add();
+var doc = app.documents.add(DocumentColorSpace.RGB, 612, 792, 1);
+//215.9 x 279.4
+// Set the ruler units to millimeters
+doc.rulerUnits = RulerUnits.Millimeters;
 
 // Define circle properties
 var circleDiameter = 1; // 1 mm
@@ -38,7 +41,7 @@ var setSpacingX = 6; // 10 mm between sets
 var setSpacingY = 10; // 10 mm between sets
 
 // Convert mm to points (Illustrator uses points, 1 mm ≈ 2.83465 points)
-var mmToPt = 2.83465;
+var mmToPt = 1;//2.83465;
 spacingX *= mmToPt;
 spacingY *= mmToPt;
 setSpacingX *= mmToPt;
@@ -76,6 +79,9 @@ for (var setY = 0; setY < charY; setY++) {
         var flag = 0;
         for (var row = 0; row < numRows; row++) {
             for (var col = 0; col < numCols; col++) {
+                if (Math.floor(Math.random() * 6) === 4){
+                    col++;
+                }
                 // Calculate the position for each circle
                 var centerX = marginX + col * spacingX + setX * setSpacingX;
                 var centerY = marginY + row * spacingY + setY * setSpacingY;
