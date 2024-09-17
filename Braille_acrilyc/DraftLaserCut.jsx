@@ -26,6 +26,23 @@ var brailleMap = {
     'x': "101101",
     'y': "111001",
     'z': "110101",
+    ',': "000010",
+    '.': "110010",
+    '-': "100100",
+    '(': "110110",
+    ')': "110110",
+    ':': "010010",
+    '1': "000001",
+    '2': "000011",
+    '3': "001001",
+    '4': "011001",
+    '5': "010001",
+    '6': "001011",
+    '7': "001111",
+    '8': "010011",
+    '9': "001100",
+    '0': "011010",
+    '#': "111100",
     ' ': "000000"
 };
 
@@ -83,8 +100,32 @@ function drawBrailleCharacter(brailleBinary, startX, startY) {
 
     // Loop over the 6 positions in the Braille binary code (2x3 grid)
     for (var i = 0; i < 6; i++) {
-        var row = Math.floor(i / 2); // 3 rows
-        var col = i % 2; // 2 columns
+        if (i === 5){
+            var row = 0;
+            var col = 0;
+        }
+        if (i === 4){
+            var row = 1;
+            var col = 0;
+        }
+        if (i === 3){
+            var row = 2;
+            var col = 0;
+        }
+        if (i === 2){
+            var row = 0;
+            var col = 1;
+        }
+        if (i === 1){
+            var row = 1;
+            var col = 1;
+        }
+        if (i === 0){
+            var row = 2;
+            var col = 1;
+        }
+        // var row = Math.floor(i / 2); // 3 rows
+        // var col = i % 2; // 2 columns
 
         var xPos = startX + col * circleSpacing; // Calculate x position
         var yPos = startY - row * circleSpacing; // Calculate y position
@@ -240,11 +281,8 @@ function createAlignHoles(diam) {
     // circle4.fillColor = blueColor; // Set fill color to blue
 }
 
-
-
-
 // Call the main function and provide the path to the text file
-var filePath = "~/Desktop/TextToBrailleGCode/Braille_acrilyc/sample.txt";  // Update this to the location of your text file
+var filePath = "~/Desktop/TextToBrailleGCode/Braille_acrilyc/menu_sample_4.txt";  // Update this to the location of your text file
 
 generateBrailleFromText(filePath);
 createVerticalLine();
