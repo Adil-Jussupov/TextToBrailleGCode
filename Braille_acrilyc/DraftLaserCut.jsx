@@ -88,7 +88,7 @@ function readTextFromFile(filePath) {
 function drawBrailleCharacter(brailleBinary, startX, startY) {
 
     var doc = app.activeDocument;
-    var circleDiameter = mmToPoints(0.6); // 1.5 mm  but for my lasercutter is 0.6 mm
+    var circleDiameter = mmToPoints(0.8); // 1.5 mm  but for my lasercutter is 0.6 mm
     var circleSpacing = mmToPoints(2.5);  // 2.5 mm between circles
     var circleRadius = circleDiameter / 2;
 
