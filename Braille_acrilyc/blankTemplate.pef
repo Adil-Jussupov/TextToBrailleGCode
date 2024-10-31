@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+   <head>
+      <meta xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:paper="http://www.aph.org/ns/paper-dimensions/1.0">
+         <paper:height>279.4mm</paper:height>
+         <paper:width>215.9mm</paper:width>
+         <paper:leftMargin>7.6mm</paper:leftMargin>
+         <paper:rightMargin>9.9mm</paper:rightMargin>
+         <paper:topMargin>12.7mm</paper:topMargin>
+         <paper:bottomMargin>16.7mm</paper:bottomMargin>
+         <dc:format>application/x-pef+xml</dc:format>
+         <dc:identifier>blankTemplate</dc:identifier>
+      </meta>
+   </head>
+   <body>
+      <volume cols="32" duplex="false" rowgap="0" rows="25">
+         <section>
+            <page>
+               <row>⠄⠂⠁⠈⠐⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
+               <row>⠀⠀⠁⠂⠄⠈⠐⠠</row>
+               <row>⠃⠅⠆⠇</row>
+            </page>
+         </section>
+      </volume>
+   </body>
+</pef>

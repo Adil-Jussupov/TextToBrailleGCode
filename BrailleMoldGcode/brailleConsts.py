@@ -1,5 +1,6 @@
 # brailleConsts.py
 # file to store Braille vars and constants
+testPrint = {6, 1456, 0, 24, 234, 0, 1, 0, 2345, 15, 34, 0, 6, 12, 1235, 123, 0, 2345, 15, 1346, 2345, 256}
 
 brailleConst = {
     "#": "0b001111",
@@ -165,10 +166,22 @@ startGCode = """
 
 ;G1 X220 Y220 F1000 ; go to the first top right corner to start printing
 
-G91 ; use relative coordinates
-G21 ; set units to millimeters
+; previous version of start gcode
+;G91 ; use relative coordinates
+;G21 ; set units to millimeters
+;M107 ; Fan off
+;G1 Z3.5 F720
+
+; current version of start gcode
 M107 ; Fan off
+G90 ; use abs coordinates
+G21 ; set units to millimeters
+G28 ;
 G1 Z3.5 F720
+G1 X170.0 Y160.0 F2500
+G91 ; use relative coordinates
+
+
 """
 
 endGCode = """
